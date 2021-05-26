@@ -9,7 +9,7 @@ def check_date(dates):
     return "N"
   if not dates.isdigit:
     print("Must be numbers!")
-    return False
+    return "N"
   else:
     return "Y"
 print("Please enter the number you want to see the number of stock. Ex:2330")
