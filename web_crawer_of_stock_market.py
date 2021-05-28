@@ -36,4 +36,4 @@ for d in check_date(dates):
             continue
         y2330 = [a.text.strip() for a in td2330 if a.text.strip()]
         print(y2330[0],y2330[1],y2330[2],y2330[3],y2330[4],y2330[5],y2330[6])
-    break
+        
