@@ -7,7 +7,7 @@ def check_date(dates):
   if len(dates) < 8 or len(dates) > 8:
     print("Must have 8 elements!")
     return "N"
-  if not dates.isdigit:
+  if not dates.isdigit():
     print("Must be numbers!")
     return "N"
   else:
