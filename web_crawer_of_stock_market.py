@@ -12,28 +12,29 @@ def check_date(dates):
     return "N"
   else:
     return "Y"
+
 print("Please enter the number you want to see the number of stock. Ex:2330")
 stock = input()
 print("Please enter the year and date you want to see the number of stock. Ex:20200101")
 dates = input()
 check_date(dates)
 for d in check_date(dates):
+  print(d)
   if d == "N":
     break
   else:
-    stock1 = int(stock)
+    stock1 = stock
     dates = int(dates)
     url = 'https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=html&date={}&stockNo={}'
-    res2330 = requests.get(url.format(dates,stock1))#get資料
+    resstock = requests.get(url.format(dates,stock1))#get資料
     time.sleep(5)
     print("Done")
-    res2330.raise_for_status()
-    soup2330 = BeautifulSoup(res2330.text, 'html.parser')
-    table2330 = soup2330.find_all('tr')
-    for tr2330 in table2330:
-        td2330 = tr2330.find_all('td')
-        if len(td2330) < 1:
+    resstock.raise_for_status()
+    soupstock = BeautifulSoup(resstock.text, 'html.parser')
+    tablestock = soupstock.find_all('tr')
+    for trstock in tablestock:
+        tdstock = trstock.find_all('td')
+        if len(tdstock) < 1:
             continue
-        y2330 = [a.text.strip() for a in td2330 if a.text.strip()]
-        print(y2330[0],y2330[1],y2330[2],y2330[3],y2330[4],y2330[5],y2330[6])
-        
+        ystock = [a.text.strip() for a in tdstock if a.text.strip()]
+        print(ystock[0],ystock[1],ystock[2],ystock[3],ystock[4],ystock[5],ystock[6])
