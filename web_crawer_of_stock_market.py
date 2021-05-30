@@ -36,4 +36,4 @@ for d in check_date(dates):
             continue
         ystock = [a.text.strip() for a in tdstock if a.text.strip()]
         print(ystock[0],ystock[1],ystock[2],ystock[3],ystock[4],ystock[5],ystock[6])
-        print("Done")
+    print("Done")
