@@ -21,7 +21,7 @@ def check_date(dates):#check the input of the date
 
 print("Please enter the number you want to see of stock. Ex:'2330' for tsmc please enter '2330'")
 stock = input()
-print("Please enter the year and date you want to see the number of stock. Ex:20200101")
+print("Please enter the year and date you want to see the number of stock. Ex:For 2021/01 please enter 20210101")
 dates = input()
 check_date(dates)
 for d in check_date(dates):
