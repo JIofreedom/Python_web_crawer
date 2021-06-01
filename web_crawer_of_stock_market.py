@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import time
 stock = 0
 dates = 0
-day = [] 
+day = [] #for day1
 day1 = [] #for X axis
 op = [] #opening price
 H = [] #highest price
@@ -19,7 +19,7 @@ def check_date(dates):#check the input of the date
   else:
     return "Y"
 
-print("Please enter the number you want to see the number of stock. Ex:2330")
+print("Please enter the number you want to see of stock. Ex:'2330' for tsmc please enter '2330'")
 stock = input()
 print("Please enter the year and date you want to see the number of stock. Ex:20200101")
 dates = input()
@@ -46,8 +46,8 @@ for d in check_date(dates):
 #Below is a line chart of the stock market
 import matplotlib.pyplot as plt
 import numpy as np
-del day[0] #cancle the title because it's not the value I want
-del op[0] 
+del day[0] #delete the head of the list because it's not the value I need
+del op[0]
 del H[0]
 del L[0]
 del cl[0]
@@ -60,13 +60,15 @@ op = [(float (x)) for x in op]
 H = [(float (x)) for x in H]
 L = [(float (x)) for x in L]
 cl = [(float (x)) for x in cl]
-plt.plot(day1,op,color='black')
-plt.plot(day1,H,color='red')
-plt.plot(day1,L,color='green')
-plt.plot(day1,cl,color='blue')
+plt.plot(day1,op,'.-',color='black')
+plt.plot(day1,H,'.-',color='red')
+plt.plot(day1,L,'.-',color='green')
+plt.plot(day1,cl,'.-',color='blue')
 plt.xticks(np.arange(day1[0],day1[-1],1.0))
+plt.yticks(np.arange(min(L)-5,max(H)+5,5.0))
 plt.title(stock +'stock this month')
 plt.xlabel('Day')
 plt.ylabel('Dollars(NTD.)')
 plt.legend(['Opening Price','Highest Price','Lowest Price','Close Prise'])
+plt.grid(True)
 plt.show()
