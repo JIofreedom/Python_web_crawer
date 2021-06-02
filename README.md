@@ -3,7 +3,7 @@ This is a Python web crawler project of Taiwan stock market.
 
 1. First input is the No. of the Taiwan stock No.  Ex:2330 for 台積電 please enter 2330.
 
-2. Second input is the date you want to see.  Ex: For 2021/01 please enter 20210101.
+2. Second input is the  date you want to see.  Ex: For 2021/01 please enter 20210101.
 
 3. Then you can see the stock you want to see for that month. 
 
