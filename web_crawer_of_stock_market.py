@@ -10,7 +10,7 @@ H = [] #highest price
 L = [] #lowest price
 cl = [] #close price
 def check_date(dates):#check the input of the date 
-  if len(dates) < 8 or len(dates) > 8:
+  if len(dates) < 6 or len(dates) > 6:
     print("Must have 8 elements!")
     return "N"
   if not dates.isdigit():
@@ -21,7 +21,7 @@ def check_date(dates):#check the input of the date
 
 print("Please enter the number you want to see of stock. Ex:'2330' for tsmc please enter '2330'")
 stock = input()
-print("Please enter the year and date you want to see the number of stock. Ex:For 2021/01 please enter 20210101")
+print("Please enter the year and date you want to see the number of stock. Ex:For 2021/01 please enter 202101")
 dates = input()
 check_date(dates)
 for d in check_date(dates):
