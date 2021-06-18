@@ -3,15 +3,15 @@ from bs4 import BeautifulSoup
 import time
 stock = 0
 dates = 0
-day = [] #for day1
+day = []  #for day1
 day1 = [] #for X axis
-op = [] #opening price
-H = [] #highest price
-L = [] #lowest price
-cl = [] #close price
-def check_date(dates):#check the input of the date 
+op = []   #opening price
+h = []    #highest price
+lo = []   #lowest price
+cl = []   #close price
+def check_date(dates):  #check the input of the date 
   if len(dates) < 6 or len(dates) > 6:
-    print("Must have 8 elements!")
+    print("Must have 6 elements!")
     return "N"
   if not dates.isdigit():
     print("Must be numbers!")
@@ -31,8 +31,8 @@ for d in check_date(dates):
     stock1 = stock
     dates = int(dates)
     url = 'https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=html&date={}&stockNo={}'
-    resstock = requests.get(url.format(dates,stock1))#get data from the website(url)
-    time.sleep(5)#sleep for 5s
+    resstock = requests.get(url.format(dates,stock1))  #get data from the website(url)
+    time.sleep(5) #sleep for 5s
     resstock.raise_for_status()
     soupstock = BeautifulSoup(resstock.text, 'html.parser')
     tablestock = soupstock.find_all('tr')
@@ -46,23 +46,20 @@ for d in check_date(dates):
 #Below is a line chart of the stock market
 import matplotlib.pyplot as plt
 import numpy as np
-del day[0] #delete the head of the list because it's not the value I need
 del op[0]
 del H[0]
 del L[0]
 del cl[0]
-i = 0
-while i < len(day):
-    day1.append(day[i][7:10])
-    i = i + 1
+for i in day[1:]: #pass the head of the list because it's not the value I want
+    day1.append(i[7:10])
 day1 = [(int(x)) for x in day1]
 op = [(float (x)) for x in op]
 H = [(float (x)) for x in H]
 L = [(float (x)) for x in L]
 cl = [(float (x)) for x in cl]
 plt.plot(day1,op,'.-',color='black')
-plt.plot(day1,H,'.-',color='red')
-plt.plot(day1,L,'.-',color='green')
+plt.plot(day1,h,'.-',color='red')
+plt.plot(day1,lo,'.-',color='green')
 plt.plot(day1,cl,'.-',color='blue')
 plt.xticks(np.arange(day1[0],day1[-1]+1,1.0))
 plt.yticks(np.arange(min(L)-5,max(H)+5,5.0))
