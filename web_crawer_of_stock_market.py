@@ -42,6 +42,11 @@ for d in check_date(dates):
             continue
         ystock = [a.text.strip() for a in tdstock if a.text.strip()]
         print(ystock[0],ystock[1],ystock[2],ystock[3],ystock[4],ystock[5],ystock[6])
+        day.append(ystock[0])
+        op.append(ystock[3])
+        h.append(ystock[4])
+        lo.append(ystock[5])
+        cl.append(ystock[6])
     print("Done")
 #Below is a line chart of the stock market
 import matplotlib.pyplot as plt
@@ -54,8 +59,8 @@ for i in day[1:]: #pass the head of the list because it's not the value I want
     day1.append(i[7:10])
 day1 = [(int(x)) for x in day1]
 op = [(float (x)) for x in op]
-H = [(float (x)) for x in H]
-L = [(float (x)) for x in L]
+H = [(float (x)) for x in h]
+L = [(float (x)) for x in lo]
 cl = [(float (x)) for x in cl]
 plt.plot(day1,op,'.-',color='black')
 plt.plot(day1,h,'.-',color='red')
